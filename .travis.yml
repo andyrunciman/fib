@@ -8,10 +8,10 @@ script:
   - docker run arunciman/fib-test npm test -- --coverage
 
 after_success:
-  - docker build -t arunciman/fib-client ./client
   - docker build -t arunciman/fib-worker ./worker
   - docker build -t arunciman/fib-nginx ./nginx
   - docker build -t arunciman/fib-server ./server
+  - docker build -t arunciman/fib-client ./client
   # Take images and push to cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push arunciman/fib-client
