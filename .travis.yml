@@ -5,10 +5,8 @@ services:
 #before_install:
 #  - docker build -t arunciman/fib-test -f ./client/Dockerfile.dev ./client
 
-#script:
-#- docker run arunciman/fib-test npm test -- --coverage
-
-after_success:
+script:
+  #- docker run arunciman/fib-test npm test -- --coverage
   - docker build -t arunciman/fib-worker ./worker
   - docker build -t arunciman/fib-nginx ./nginx
   - docker build -t arunciman/fib-server ./server
